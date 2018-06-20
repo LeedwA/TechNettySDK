@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //云端的maven库
+    //        compile 'com.cwgj:common:0.1'
+    //    compile 'com.go、ogl、e.protobuf:protobuf-lite:3.0.1'
+    //    compile 'org.springframework:spring-beans:4.3.13.RELEASE'
+    compile 'com.google.protobuf:protobuf-java:3.1.0'
+    compile 'com.google.protobuf:protoc:3.1.0'
+    compile 'io.netty:netty-all:4.1.6.Final'
+//    compile 'com.googlecode.protobuf-java-format:protobuf-java-format:1.2'
+    //    provided 'com.google.code.gson:gson:2.2.4'
+    provided 'com.github.TopTech666:TechRxbus:1.2.2'
+}
