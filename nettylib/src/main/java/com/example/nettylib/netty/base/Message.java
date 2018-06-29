@@ -138,6 +138,38 @@ public final class Message {
      * <code>optional bytes data = 8;</code>
      */
     com.google.protobuf.ByteString getData();
+
+    /**
+     * <code>optional int32 ver = 9;</code>
+     */
+    boolean hasVer();
+    /**
+     * <code>optional int32 ver = 9;</code>
+     */
+    int getVer();
+
+    /**
+     * <code>optional string remark = 10;</code>
+     */
+    boolean hasRemark();
+    /**
+     * <code>optional string remark = 10;</code>
+     */
+    String getRemark();
+    /**
+     * <code>optional string remark = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getRemarkBytes();
+
+    /**
+     * <code>optional int32 func_code = 11;</code>
+     */
+    boolean hasFuncCode();
+    /**
+     * <code>optional int32 func_code = 11;</code>
+     */
+    int getFuncCode();
   }
   /**
    * Protobuf type {@code Head}
@@ -158,6 +190,9 @@ public final class Message {
       status_ = 0;
       totalLen_ = 0;
       data_ = com.google.protobuf.ByteString.EMPTY;
+      ver_ = 0;
+      remark_ = "";
+      funcCode_ = 0;
     }
 
     @Override
@@ -223,6 +258,22 @@ public final class Message {
             case 66: {
               bitField0_ |= 0x00000040;
               data_ = input.readBytes();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000080;
+              ver_ = input.readInt32();
+              break;
+            }
+            case 82: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000100;
+              remark_ = bs;
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000200;
+              funcCode_ = input.readInt32();
               break;
             }
           }
@@ -457,6 +508,78 @@ public final class Message {
       return data_;
     }
 
+    public static final int VER_FIELD_NUMBER = 9;
+    private int ver_;
+    /**
+     * <code>optional int32 ver = 9;</code>
+     */
+    public boolean hasVer() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 ver = 9;</code>
+     */
+    public int getVer() {
+      return ver_;
+    }
+
+    public static final int REMARK_FIELD_NUMBER = 10;
+    private volatile Object remark_;
+    /**
+     * <code>optional string remark = 10;</code>
+     */
+    public boolean hasRemark() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string remark = 10;</code>
+     */
+    public String getRemark() {
+      Object ref = remark_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          remark_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string remark = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRemarkBytes() {
+      Object ref = remark_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        remark_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FUNC_CODE_FIELD_NUMBER = 11;
+    private int funcCode_;
+    /**
+     * <code>optional int32 func_code = 11;</code>
+     */
+    public boolean hasFuncCode() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 func_code = 11;</code>
+     */
+    public int getFuncCode() {
+      return funcCode_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -514,6 +637,15 @@ public final class Message {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeBytes(8, data_);
       }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(9, ver_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, remark_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(11, funcCode_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -547,6 +679,17 @@ public final class Message {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(8, data_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, ver_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, remark_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, funcCode_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -600,6 +743,21 @@ public final class Message {
         result = result && getData()
             .equals(other.getData());
       }
+      result = result && (hasVer() == other.hasVer());
+      if (hasVer()) {
+        result = result && (getVer()
+            == other.getVer());
+      }
+      result = result && (hasRemark() == other.hasRemark());
+      if (hasRemark()) {
+        result = result && getRemark()
+            .equals(other.getRemark());
+      }
+      result = result && (hasFuncCode() == other.hasFuncCode());
+      if (hasFuncCode()) {
+        result = result && (getFuncCode()
+            == other.getFuncCode());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -638,6 +796,18 @@ public final class Message {
       if (hasData()) {
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + getData().hashCode();
+      }
+      if (hasVer()) {
+        hash = (37 * hash) + VER_FIELD_NUMBER;
+        hash = (53 * hash) + getVer();
+      }
+      if (hasRemark()) {
+        hash = (37 * hash) + REMARK_FIELD_NUMBER;
+        hash = (53 * hash) + getRemark().hashCode();
+      }
+      if (hasFuncCode()) {
+        hash = (37 * hash) + FUNC_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getFuncCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -771,6 +941,12 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000020);
         data_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000040);
+        ver_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        remark_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
+        funcCode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -823,6 +999,18 @@ public final class Message {
           to_bitField0_ |= 0x00000040;
         }
         result.data_ = data_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.ver_ = ver_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.remark_ = remark_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.funcCode_ = funcCode_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -889,6 +1077,17 @@ public final class Message {
         }
         if (other.hasData()) {
           setData(other.getData());
+        }
+        if (other.hasVer()) {
+          setVer(other.getVer());
+        }
+        if (other.hasRemark()) {
+          bitField0_ |= 0x00000100;
+          remark_ = other.remark_;
+          onChanged();
+        }
+        if (other.hasFuncCode()) {
+          setFuncCode(other.getFuncCode());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1346,6 +1545,146 @@ public final class Message {
         onChanged();
         return this;
       }
+
+      private int ver_ ;
+      /**
+       * <code>optional int32 ver = 9;</code>
+       */
+      public boolean hasVer() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 ver = 9;</code>
+       */
+      public int getVer() {
+        return ver_;
+      }
+      /**
+       * <code>optional int32 ver = 9;</code>
+       */
+      public Builder setVer(int value) {
+        bitField0_ |= 0x00000080;
+        ver_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 ver = 9;</code>
+       */
+      public Builder clearVer() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        ver_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private Object remark_ = "";
+      /**
+       * <code>optional string remark = 10;</code>
+       */
+      public boolean hasRemark() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional string remark = 10;</code>
+       */
+      public String getRemark() {
+        Object ref = remark_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            remark_ = s;
+          }
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>optional string remark = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRemarkBytes() {
+        Object ref = remark_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          remark_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string remark = 10;</code>
+       */
+      public Builder setRemark(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        remark_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string remark = 10;</code>
+       */
+      public Builder clearRemark() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        remark_ = getDefaultInstance().getRemark();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string remark = 10;</code>
+       */
+      public Builder setRemarkBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        remark_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int funcCode_ ;
+      /**
+       * <code>optional int32 func_code = 11;</code>
+       */
+      public boolean hasFuncCode() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 func_code = 11;</code>
+       */
+      public int getFuncCode() {
+        return funcCode_;
+      }
+      /**
+       * <code>optional int32 func_code = 11;</code>
+       */
+      public Builder setFuncCode(int value) {
+        bitField0_ |= 0x00000200;
+        funcCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 func_code = 11;</code>
+       */
+      public Builder clearFuncCode() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        funcCode_ = 0;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
@@ -1421,17 +1760,17 @@ public final class Message {
      *版本号
      * </pre>
      *
-     * <code>required int32 ver = 2;</code>
+     * <code>required int32 base_ver = 2;</code>
      */
-    boolean hasVer();
+    boolean hasBaseVer();
     /**
      * <pre>
      *版本号
      * </pre>
      *
-     * <code>required int32 ver = 2;</code>
+     * <code>required int32 base_ver = 2;</code>
      */
-    int getVer();
+    int getBaseVer();
 
     /**
      * <pre>
@@ -1468,47 +1807,13 @@ public final class Message {
     int getDataLen();
 
     /**
-     * <pre>
-     *业务数据
-     * </pre>
-     *
      * <code>optional bytes data = 5;</code>
      */
     boolean hasData();
     /**
-     * <pre>
-     *业务数据
-     * </pre>
-     *
      * <code>optional bytes data = 5;</code>
      */
     com.google.protobuf.ByteString getData();
-
-    /**
-     * <pre>
-     *其他
-     * </pre>
-     *
-     * <code>required string remark = 6;</code>
-     */
-    boolean hasRemark();
-    /**
-     * <pre>
-     *其他
-     * </pre>
-     *
-     * <code>required string remark = 6;</code>
-     */
-    String getRemark();
-    /**
-     * <pre>
-     *其他
-     * </pre>
-     *
-     * <code>required string remark = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getRemarkBytes();
   }
   /**
    * Protobuf type {@code Base}
@@ -1523,11 +1828,10 @@ public final class Message {
     }
     private Base() {
       opCode_ = 0;
-      ver_ = 0;
+      baseVer_ = 0;
       param_ = 0;
       dataLen_ = 0;
       data_ = com.google.protobuf.ByteString.EMPTY;
-      remark_ = "";
     }
 
     @Override
@@ -1565,7 +1869,7 @@ public final class Message {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              ver_ = input.readInt32();
+              baseVer_ = input.readInt32();
               break;
             }
             case 24: {
@@ -1581,12 +1885,6 @@ public final class Message {
             case 42: {
               bitField0_ |= 0x00000010;
               data_ = input.readBytes();
-              break;
-            }
-            case 50: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000020;
-              remark_ = bs;
               break;
             }
           }
@@ -1637,16 +1935,16 @@ public final class Message {
       return opCode_;
     }
 
-    public static final int VER_FIELD_NUMBER = 2;
-    private int ver_;
+    public static final int BASE_VER_FIELD_NUMBER = 2;
+    private int baseVer_;
     /**
      * <pre>
      *版本号
      * </pre>
      *
-     * <code>required int32 ver = 2;</code>
+     * <code>required int32 base_ver = 2;</code>
      */
-    public boolean hasVer() {
+    public boolean hasBaseVer() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
@@ -1654,10 +1952,10 @@ public final class Message {
      *版本号
      * </pre>
      *
-     * <code>required int32 ver = 2;</code>
+     * <code>required int32 base_ver = 2;</code>
      */
-    public int getVer() {
-      return ver_;
+    public int getBaseVer() {
+      return baseVer_;
     }
 
     public static final int PARAM_FIELD_NUMBER = 3;
@@ -1709,78 +2007,16 @@ public final class Message {
     public static final int DATA_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString data_;
     /**
-     * <pre>
-     *业务数据
-     * </pre>
-     *
      * <code>optional bytes data = 5;</code>
      */
     public boolean hasData() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <pre>
-     *业务数据
-     * </pre>
-     *
      * <code>optional bytes data = 5;</code>
      */
     public com.google.protobuf.ByteString getData() {
       return data_;
-    }
-
-    public static final int REMARK_FIELD_NUMBER = 6;
-    private volatile Object remark_;
-    /**
-     * <pre>
-     *其他
-     * </pre>
-     *
-     * <code>required string remark = 6;</code>
-     */
-    public boolean hasRemark() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <pre>
-     *其他
-     * </pre>
-     *
-     * <code>required string remark = 6;</code>
-     */
-    public String getRemark() {
-      Object ref = remark_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          remark_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     *其他
-     * </pre>
-     *
-     * <code>required string remark = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getRemarkBytes() {
-      Object ref = remark_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        remark_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1793,7 +2029,7 @@ public final class Message {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasVer()) {
+      if (!hasBaseVer()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1802,10 +2038,6 @@ public final class Message {
         return false;
       }
       if (!hasDataLen()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRemark()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1819,7 +2051,7 @@ public final class Message {
         output.writeInt32(1, opCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, ver_);
+        output.writeInt32(2, baseVer_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, param_);
@@ -1829,9 +2061,6 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(5, data_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, remark_);
       }
       unknownFields.writeTo(output);
     }
@@ -1847,7 +2076,7 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, ver_);
+          .computeInt32Size(2, baseVer_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1860,9 +2089,6 @@ public final class Message {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(5, data_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, remark_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1886,10 +2112,10 @@ public final class Message {
         result = result && (getOpCode()
             == other.getOpCode());
       }
-      result = result && (hasVer() == other.hasVer());
-      if (hasVer()) {
-        result = result && (getVer()
-            == other.getVer());
+      result = result && (hasBaseVer() == other.hasBaseVer());
+      if (hasBaseVer()) {
+        result = result && (getBaseVer()
+            == other.getBaseVer());
       }
       result = result && (hasParam() == other.hasParam());
       if (hasParam()) {
@@ -1906,11 +2132,6 @@ public final class Message {
         result = result && getData()
             .equals(other.getData());
       }
-      result = result && (hasRemark() == other.hasRemark());
-      if (hasRemark()) {
-        result = result && getRemark()
-            .equals(other.getRemark());
-      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1926,9 +2147,9 @@ public final class Message {
         hash = (37 * hash) + OP_CODE_FIELD_NUMBER;
         hash = (53 * hash) + getOpCode();
       }
-      if (hasVer()) {
-        hash = (37 * hash) + VER_FIELD_NUMBER;
-        hash = (53 * hash) + getVer();
+      if (hasBaseVer()) {
+        hash = (37 * hash) + BASE_VER_FIELD_NUMBER;
+        hash = (53 * hash) + getBaseVer();
       }
       if (hasParam()) {
         hash = (37 * hash) + PARAM_FIELD_NUMBER;
@@ -1941,10 +2162,6 @@ public final class Message {
       if (hasData()) {
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + getData().hashCode();
-      }
-      if (hasRemark()) {
-        hash = (37 * hash) + REMARK_FIELD_NUMBER;
-        hash = (53 * hash) + getRemark().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2066,7 +2283,7 @@ public final class Message {
         super.clear();
         opCode_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        ver_ = 0;
+        baseVer_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         param_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -2074,8 +2291,6 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000008);
         data_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000010);
-        remark_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -2107,7 +2322,7 @@ public final class Message {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.ver_ = ver_;
+        result.baseVer_ = baseVer_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
@@ -2120,10 +2335,6 @@ public final class Message {
           to_bitField0_ |= 0x00000010;
         }
         result.data_ = data_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.remark_ = remark_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2169,8 +2380,8 @@ public final class Message {
         if (other.hasOpCode()) {
           setOpCode(other.getOpCode());
         }
-        if (other.hasVer()) {
-          setVer(other.getVer());
+        if (other.hasBaseVer()) {
+          setBaseVer(other.getBaseVer());
         }
         if (other.hasParam()) {
           setParam(other.getParam());
@@ -2181,11 +2392,6 @@ public final class Message {
         if (other.hasData()) {
           setData(other.getData());
         }
-        if (other.hasRemark()) {
-          bitField0_ |= 0x00000020;
-          remark_ = other.remark_;
-          onChanged();
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2195,16 +2401,13 @@ public final class Message {
         if (!hasOpCode()) {
           return false;
         }
-        if (!hasVer()) {
+        if (!hasBaseVer()) {
           return false;
         }
         if (!hasParam()) {
           return false;
         }
         if (!hasDataLen()) {
-          return false;
-        }
-        if (!hasRemark()) {
           return false;
         }
         return true;
@@ -2277,15 +2480,15 @@ public final class Message {
         return this;
       }
 
-      private int ver_ ;
+      private int baseVer_ ;
       /**
        * <pre>
        *版本号
        * </pre>
        *
-       * <code>required int32 ver = 2;</code>
+       * <code>required int32 base_ver = 2;</code>
        */
-      public boolean hasVer() {
+      public boolean hasBaseVer() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
@@ -2293,21 +2496,21 @@ public final class Message {
        *版本号
        * </pre>
        *
-       * <code>required int32 ver = 2;</code>
+       * <code>required int32 base_ver = 2;</code>
        */
-      public int getVer() {
-        return ver_;
+      public int getBaseVer() {
+        return baseVer_;
       }
       /**
        * <pre>
        *版本号
        * </pre>
        *
-       * <code>required int32 ver = 2;</code>
+       * <code>required int32 base_ver = 2;</code>
        */
-      public Builder setVer(int value) {
+      public Builder setBaseVer(int value) {
         bitField0_ |= 0x00000002;
-        ver_ = value;
+        baseVer_ = value;
         onChanged();
         return this;
       }
@@ -2316,11 +2519,11 @@ public final class Message {
        *版本号
        * </pre>
        *
-       * <code>required int32 ver = 2;</code>
+       * <code>required int32 base_ver = 2;</code>
        */
-      public Builder clearVer() {
+      public Builder clearBaseVer() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        ver_ = 0;
+        baseVer_ = 0;
         onChanged();
         return this;
       }
@@ -2423,30 +2626,18 @@ public final class Message {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <pre>
-       *业务数据
-       * </pre>
-       *
        * <code>optional bytes data = 5;</code>
        */
       public boolean hasData() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <pre>
-       *业务数据
-       * </pre>
-       *
        * <code>optional bytes data = 5;</code>
        */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
-       * <pre>
-       *业务数据
-       * </pre>
-       *
        * <code>optional bytes data = 5;</code>
        */
       public Builder setData(com.google.protobuf.ByteString value) {
@@ -2459,115 +2650,11 @@ public final class Message {
         return this;
       }
       /**
-       * <pre>
-       *业务数据
-       * </pre>
-       *
        * <code>optional bytes data = 5;</code>
        */
       public Builder clearData() {
         bitField0_ = (bitField0_ & ~0x00000010);
         data_ = getDefaultInstance().getData();
-        onChanged();
-        return this;
-      }
-
-      private Object remark_ = "";
-      /**
-       * <pre>
-       *其他
-       * </pre>
-       *
-       * <code>required string remark = 6;</code>
-       */
-      public boolean hasRemark() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <pre>
-       *其他
-       * </pre>
-       *
-       * <code>required string remark = 6;</code>
-       */
-      public String getRemark() {
-        Object ref = remark_;
-        if (!(ref instanceof String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            remark_ = s;
-          }
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      /**
-       * <pre>
-       *其他
-       * </pre>
-       *
-       * <code>required string remark = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getRemarkBytes() {
-        Object ref = remark_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
-          remark_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       *其他
-       * </pre>
-       *
-       * <code>required string remark = 6;</code>
-       */
-      public Builder setRemark(
-          String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        remark_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *其他
-       * </pre>
-       *
-       * <code>required string remark = 6;</code>
-       */
-      public Builder clearRemark() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        remark_ = getDefaultInstance().getRemark();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *其他
-       * </pre>
-       *
-       * <code>required string remark = 6;</code>
-       */
-      public Builder setRemarkBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        remark_ = value;
         onChanged();
         return this;
       }
@@ -2639,13 +2726,14 @@ public final class Message {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\rMessage.proto\"q\n\004Head\022\014\n\004flag\030\001 \002(\005\022\r\n" +
-      "\005token\030\002 \002(\t\022\016\n\006msg_id\030\004 \002(\005\022\013\n\003mac\030\005 \002(" +
-      "\t\022\016\n\006status\030\006 \002(\005\022\021\n\ttotal_len\030\007 \002(\005\022\014\n\004" +
-      "data\030\010 \001(\014\"c\n\004Base\022\017\n\007op_code\030\001 \002(\005\022\013\n\003v" +
-      "er\030\002 \002(\005\022\r\n\005param\030\003 \002(\005\022\020\n\010data_len\030\004 \002(" +
-      "\005\022\014\n\004data\030\005 \001(\014\022\016\n\006remark\030\006 \002(\tB\021\n\006proto" +
-      "sB\007Message"
+      "\n\rMessage.proto\"\241\001\n\004Head\022\014\n\004flag\030\001 \002(\005\022\r" +
+      "\n\005token\030\002 \002(\t\022\016\n\006msg_id\030\004 \002(\005\022\013\n\003mac\030\005 \002" +
+      "(\t\022\016\n\006status\030\006 \002(\005\022\021\n\ttotal_len\030\007 \002(\005\022\014\n" +
+      "\004data\030\010 \001(\014\022\013\n\003ver\030\t \001(\005\022\016\n\006remark\030\n \001(\t" +
+      "\022\021\n\tfunc_code\030\013 \001(\005\"X\n\004Base\022\017\n\007op_code\030\001" +
+      " \002(\005\022\020\n\010base_ver\030\002 \002(\005\022\r\n\005param\030\003 \002(\005\022\020\n" +
+      "\010data_len\030\004 \002(\005\022\014\n\004data\030\005 \001(\014B\021\n\006protosB" +
+      "\007Message"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2664,13 +2752,13 @@ public final class Message {
     internal_static_Head_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Head_descriptor,
-        new String[] { "Flag", "Token", "MsgId", "Mac", "Status", "TotalLen", "Data", });
+        new String[] { "Flag", "Token", "MsgId", "Mac", "Status", "TotalLen", "Data", "Ver", "Remark", "FuncCode", });
     internal_static_Base_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Base_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Base_descriptor,
-        new String[] { "OpCode", "Ver", "Param", "DataLen", "Data", "Remark", });
+        new String[] { "OpCode", "BaseVer", "Param", "DataLen", "Data", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
