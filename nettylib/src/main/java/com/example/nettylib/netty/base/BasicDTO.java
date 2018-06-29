@@ -22,8 +22,8 @@ public class BasicDTO extends HeadDTO implements Serializable {
     public int param;//业务参数
     @TechFled("dataLen")
     public int dataLen; //业务数据长度
-    @TechFled("data")
-    public ArrayList<ByteString> data; //业务数据长度
+//    @TechFled("data")
+//    public ArrayList<ByteString> data; //业务数据长度
 
 
 }

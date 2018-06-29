@@ -19,6 +19,7 @@ public class HeadDTO {
 
     @TechFled("mac")
     public String mac;//校验码
+    
     @TechFled("status")
     public int status;
 
@@ -35,9 +36,9 @@ public class HeadDTO {
 
     @TechFled("ver")
     public int ver;//版本号
-
-    @TechFled("data")
-    public ArrayList<ByteString> data; //业务数据长度
+//
+//    @TechFled("data")
+//    public ArrayList<ByteString> data; //业务数据长度
 
 
 
