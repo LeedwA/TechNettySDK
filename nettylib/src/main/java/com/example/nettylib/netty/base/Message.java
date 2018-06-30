@@ -348,7 +348,7 @@ public final class Message {
       if (ref instanceof String) {
         return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -368,7 +368,7 @@ public final class Message {
         getTokenBytes() {
       Object ref = token_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (String) ref);
         token_ = b;
@@ -425,7 +425,7 @@ public final class Message {
       if (ref instanceof String) {
         return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -445,7 +445,7 @@ public final class Message {
         getMacBytes() {
       Object ref = mac_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (String) ref);
         mac_ = b;
@@ -539,7 +539,7 @@ public final class Message {
       if (ref instanceof String) {
         return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -555,7 +555,7 @@ public final class Message {
         getRemarkBytes() {
       Object ref = remark_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (String) ref);
         remark_ = b;
@@ -1226,7 +1226,7 @@ public final class Message {
           getTokenBytes() {
         Object ref = token_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (String) ref);
           token_ = b;
@@ -1374,7 +1374,7 @@ public final class Message {
           getMacBytes() {
         Object ref = mac_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (String) ref);
           mac_ = b;
@@ -1609,7 +1609,7 @@ public final class Message {
           getRemarkBytes() {
         Object ref = remark_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (String) ref);
           remark_ = b;
