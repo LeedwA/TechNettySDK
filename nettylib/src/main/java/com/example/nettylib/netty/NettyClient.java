@@ -93,7 +93,9 @@ public class NettyClient {
                       boolean isForce,
                       final ConnectCallback connectCallback,
                       final ChannelInboundHandlerAdapter adapter) {
-        if (isForce) disConect();
+        if (isForce) {
+            disConect();
+        }
         if (isChannerAlive()) return;
         this.IP = host;
         this.PORT = port;
@@ -152,7 +154,7 @@ public class NettyClient {
 
     //重新连接
     public synchronized void reConnect() {
-        if(connectCallback==null)return;
+        if (connectCallback == null) return;
         connectCallback.isConnect(false);
         disConect();
         //断错重连
@@ -180,6 +182,7 @@ public class NettyClient {
     public void disConect() {
         if (channel != null) {
             channel.closeFuture();
+            channel=null;
         }
     }
 

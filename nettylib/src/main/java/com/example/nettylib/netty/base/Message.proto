@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+option java_package="com.cwgj.service.transport.common.protobuf";
+option java_outer_classname = "Message";
+
+message Head
+{
+    //通讯帧的包头
+    required int32 flag=1;//起始标记
+    required string token=2;//停车场id|token
+    required int32 msg_id = 4;//消息id
+    required string mac = 5;//校验码
+    required int32 status = 6;
+    required int32 total_len = 7;//数据长度(DataLen)
+
+    optional bytes data=8;
+
+    optional int32 ver=9;
+    optional string remark=10;
+    optional int32 func_code=11;
+}
+
+message Base
+{
+    required int32 op_code=1;//操作码
+    required int32 base_ver=2;//版本号
+    required int32 param=3;//业务参数
+    required int32 data_len = 4;//业务数据长度(DataLen)
+
+    optional bytes data=5;
+}
+

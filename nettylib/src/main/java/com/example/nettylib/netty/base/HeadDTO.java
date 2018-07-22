@@ -36,6 +36,7 @@ public class HeadDTO {
 
     @TechFled("ver")
     public int ver;//版本号
+
 //
 //    @TechFled("data")
 //    public ArrayList<ByteString> data; //业务数据长度
